@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Sign-Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin: 5px 0 10px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        .radio-group input {
+            margin-right: 5px;
+            width: auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit {
+            background-color: #28a745;
+            color: white;
+        }
+        .reset {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sign Up to Support Our Charity</h2>
+    <p>Join us in making a difference! Here are three reasons why your support matters:</p>
+    <ul>
+        <li>Providing food and shelter to those in need</li>
+        <li>Supporting education for underprivileged children</li>
+        <li>Funding medical care for the less fortunate</li>
+    </ul>
+
+    <form id="charityForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label>Sex:</label>
+        <div class="radio-group">
+            <label><input type="radio" id="male" name="sex" value="male" required> Male</label>
+            <label><input type="radio" id="female" name="sex" value="female" required> Female</label>
+            <label><input type="radio" id="preferNotSay" name="sex" value="preferNotSay" required> Prefer not to say</label>
+        </div>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contact">Contact Number (optional):</label>
+        <input type="text" id="contact" name="contact">
+
+        <div class="buttons">
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('charityForm').addEventListener('submit', function(event) {
+        const inputs = document.querySelectorAll('input[required]');
+        for (let input of inputs) {
+            if (!input.value.trim()) {
+                alert('Please fill out this field: ' + input.name);
+                input.focus();
+                event.preventDefault();
+                return;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
